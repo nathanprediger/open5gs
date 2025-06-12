@@ -2,12 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: open5gs-my5gran01
-  namespace: open5gs
+  namespace: nrprediger
   labels:
     epc-mode: my5gran01
     prometheus: open5gs-monitor
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       epc-mode: my5gran01
@@ -27,7 +27,7 @@ spec:
           command: ["/bin/my5gtester-init"]
           env:            
             - name: DATABASE_URL
-              value: mongodb://open5gs-mongodb-svc:27017
+              value: mongodb://mongo.nrprediger.svc.cluster.local:27017
             - name: IMSI
               value: "999700000000000"
             - name: RANDOM_SLICE
@@ -134,7 +134,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: open5gs-my5gran01-telegraf-cfg
-  namespace: open5gs
+  namespace: nrprediger
 data:
   telegraf.conf: |+
     [[outputs.prometheus_client]]
@@ -155,7 +155,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: open5gs-my5gran01
-  namespace: open5gs
+  namespace: nrprediger
   labels:
     epc-mode: my5gran01
 spec:
@@ -172,7 +172,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: open5gs-my5gran01
-  namespace: open5gs
+  namespace: nrprediger
   labels:
     epc-mode: my5gran01
     release: prometheus

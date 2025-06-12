@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: open5gs-my5gtester-video-4k
-  namespace: open5gs
+  namespace: nrprediger
   labels:
     epc-mode: my5gtester
 data:

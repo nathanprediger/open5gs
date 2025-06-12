@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: open5gs-mygtester-config
-  namespace: open5gs
+  namespace: nrprediger
   labels:
     epc-mode: my5gtester
 data:
@@ -38,7 +38,7 @@ data:
         sd: "1"
 
     amfif:
-      ip: "open5gs-amf-sctp"
+      ip: "open5gs-amf"
       port: 38412
 
     logs:
