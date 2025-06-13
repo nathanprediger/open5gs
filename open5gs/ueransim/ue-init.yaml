@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: open5gs-ue-init
-  namespace: open5gs
+  namespace: nrprediger
   labels:
     epc-mode: ueransim
 data:
