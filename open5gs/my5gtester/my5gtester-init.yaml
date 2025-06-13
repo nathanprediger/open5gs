@@ -17,7 +17,7 @@ data:
     RESULT=$(python3 /bin/initUE.py)
     echo "From initUE.py: $RESULT"
     IMSI=$(cut -d , -f 2 <<< $RESULT)
-    IMSI=$${IMSI:5}
+    IMSI=${IMSI:5}
     # SLICE=$(cut -d , -f 1 <<< $RESULT)
 
     S=$(printf "%02d" $SLICE)
